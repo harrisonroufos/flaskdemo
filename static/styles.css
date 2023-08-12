@@ -11,3 +11,11 @@ body {
 #content {
     margin-left: 3em;
 }
+
+#yes_gif {
+    width: 50%;
+}
+
+#no_gif {
+    width: 50%;
+}
