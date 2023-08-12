@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}About{% endblock %}
+{% block content %}
+    <h1>About</h1>
+    <p>This website allows you to search and find information using Wiki API. (Made with Flask)</p>
+    <h2>Now for the crazy bit</h2>
+    <p>Ask any question?</p>
+    <p>Type your question below (yes and no answers only)<p>
+    <form method="post" action="">
+    <p><label>Question: <input type="text" id="question" name="question"></label></p>
+    <p><input type="submit" id="submit_question" value="Ask Question"></p>
+    </form>
+{% endblock %}

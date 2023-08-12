@@ -1,3 +1,5 @@
+import random
+
 from flask import Flask, render_template, request, redirect, url_for, session
 import wikipedia
 
@@ -11,9 +13,22 @@ def home():
     return render_template("home.html")
 
 
-@app.route('/about')
+@app.route('/no')
+def no():
+    return render_template("no.html")
+
+
+@app.route('/yes')
+def yes():
+    return render_template("yes.html")
+
+
+@app.route('/about', methods=['POST', 'GET'])
 def about():
-    return "I am still working on this"
+    if request.method == 'POST':
+        random_answer = random_yes_or_no(1, 2)
+        return redirect(url_for(random_answer))
+    return render_template("about.html")
 
 
 @app.route('/search', methods=['POST', 'GET'])
@@ -29,6 +44,17 @@ def results():
     search_term = session['search_term']
     page = get_page(search_term)
     return render_template("results.html", page=page)
+
+
+def random_yes_or_no(start_number, end_number):
+    """Return a yes or no"""
+    random_chance = random.randint(start_number, end_number)
+
+    if random_chance <= end_number / 2:
+        answer = "yes"
+    else:
+        answer = "no"
+    return answer
 
 
 def get_page(search_term):
